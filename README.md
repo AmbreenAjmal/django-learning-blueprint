@@ -77,12 +77,3 @@ Keep this mental model in mind throughout all phases.
 
 ---
 
-## Quick Reference
-
-Jump to [quick-reference/](./quick-reference/) for a cheat sheet of essential commands, key packages, and learning resources.
-
----
-
-## Contributing
-
-Found a mistake or want to improve an example? Open a PR — learners helping learners is what this repo is about.
