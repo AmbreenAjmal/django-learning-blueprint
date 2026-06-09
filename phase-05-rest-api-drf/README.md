@@ -113,11 +113,51 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-Get a token:
+**Step 1 — Get a token:**
 ```bash
 curl -X POST http://127.0.0.1:8000/api/token/ \
   -H "Content-Type: application/json" \
   -d '{"username": "your_username", "password": "your_password"}'
+```
+
+Response:
+```json
+{"token": "9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"}
+```
+
+**Step 2 — Read posts without a token (allowed):**
+```bash
+curl http://127.0.0.1:8000/api/posts/
+```
+
+**Step 3 — Try creating a post without a token (blocked):**
+```bash
+curl -X POST http://127.0.0.1:8000/api/posts/ \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Test", "content": "Test", "published": true}'
+```
+Returns `403 Forbidden`.
+
+**Step 4 — Create a post with a token (allowed):**
+```bash
+curl -X POST http://127.0.0.1:8000/api/posts/ \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Token YOUR_TOKEN_HERE" \
+  -d '{"title": "My Post", "content": "Created via API", "published": true}'
+```
+Returns `201 Created` with the new post data.
+
+**Step 5 — Test filtering and search:**
+```bash
+# Filter by published status
+curl http://127.0.0.1:8000/api/posts/?published=true
+
+# Search by keyword
+curl http://127.0.0.1:8000/api/posts/?search=serializer
+
+# Pagination
+curl http://127.0.0.1:8000/api/posts/?page=1
+curl http://127.0.0.1:8000/api/posts/?page=2
 ```
 
 ---
