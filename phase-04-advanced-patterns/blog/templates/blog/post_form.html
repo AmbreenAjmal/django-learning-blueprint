@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Post</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="brand" href="{% url 'post_list' %}">Django Blog</a>
+    </nav>
+
+    <div class="container">
+        <a class="back-link" href="{% url 'post_list' %}">← Back to posts</a>
+        <div class="card" style="max-width: 620px; margin: 0 auto;">
+            <h2>Create New Post</h2>
+            <form method="post">
+                {% csrf_token %}
+                <label>Title</label>
+                <input type="text" name="title" required>
+                <label>Content</label>
+                <textarea name="content" required></textarea>
+                <button class="btn" type="submit">Publish</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

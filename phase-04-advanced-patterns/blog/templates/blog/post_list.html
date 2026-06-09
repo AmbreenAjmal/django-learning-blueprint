@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="brand" href="{% url 'post_list' %}">Django Blog</a>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Blog Posts</h1>
+        {% for post in posts %}
+            <div class="post">
+                <h2>{{ post.title }}</h2>
+                <p class="meta">By {{ post.author }} &mdash; {{ post.created_at|date:"F j, Y" }}</p>
+                <p>{{ post.content|truncatewords:20 }}</p>
+            </div>
+        {% empty %}
+            <p>No published posts yet.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
