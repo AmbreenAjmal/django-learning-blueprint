@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="brand" href="{% url 'post_list' %}">Django Blog</a>
+        <div class="nav-links">
+            {% if user.is_authenticated %}
+                <span>Hello, {{ user.username }}</span>
+                <a class="btn btn-new-post" href="{% url 'post_create' %}">+ New Post</a>
+                <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button class="btn-logout" type="submit">Logout</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Blog Posts</h1>
+        {% for post in posts %}
+            <div class="post">
+                <h2>{{ post.title }}</h2>
+                <p class="meta">By {{ post.author }} &mdash; {{ post.created_at|date:"F j, Y" }}</p>
+                <p>{{ post.content|truncatewords:20 }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
