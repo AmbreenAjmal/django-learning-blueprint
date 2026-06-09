@@ -29,7 +29,7 @@ If any of these feel shaky, spend a week on Python fundamentals first. Django wi
 | 4 | [phase-04-advanced-patterns](./phase-04-advanced-patterns/) | Managers, signals, middleware, caching, email |
 | 5 | [phase-05-rest-api-drf](./phase-05-rest-api-drf/) | Build a REST API with Django REST Framework |
 | 6 | [phase-06-testing-quality](./phase-06-testing-quality/) | Tests, code quality tools, security checklist |
-| 7 | [phase-07-capstone](./phase-07-capstone/) | One complete production-quality project |
+| 7 | Build your own | Capstone — apply everything from all phases in one project of your choice |
 | — | [quick-reference](./quick-reference/) | Commands, packages, and resources cheat sheet |
 
 Work through the phases **in order**. Each phase ends with a checkpoint project you commit and push.
